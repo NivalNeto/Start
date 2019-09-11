@@ -4,24 +4,26 @@
 #include <math.h> 
 
 int main(){
-	
+	//Colocar acento 
 	setlocale(LC_ALL, "Portuguese");	
 	
 	int i = 0;
 
 
 	do {
+		//inicio do menu
 		printf(" Digite 1 para saber se um numero e par ou impar\n\n Digite 2 para saber a potencia de um numero\n\n Digite 3 para saber a raiz de um numero\n\n Digite 4 para saber se um ano e bissexto ou não bissexto\n\n Digite 5 para calcular medias\n\n Digite 6\n\n Digite 7\n\n Digite 8\n\n Digite 0 para sair\n\n Digite aqui: ");
 		scanf("%d", &i);
 	
 	switch(i){
 	
 		case 1:
-			
+			//entrada do primeiro caso
 			printf("\n\nDigite o numero aqui\n\n");
 			scanf("%d", &i);
-			
+			//processamento
 		if(i % 2 == 0){
+			//saída
 			printf("%d é par\n\n", i);
 		}else{
 			printf("%d é impar\n\n", i );
@@ -31,6 +33,7 @@ int main(){
 		case 2:
 			float a,p;
 			int b;
+			//entrada
 			printf("\n Digite 2\n");
 				
 			printf("\n\n Entre com o numero: ");
@@ -38,9 +41,9 @@ int main(){
 				
 			printf("\n\n Entre com outro numero: ");
 			scanf("%d", &b);
-			
+			//processamento
 			p=pow(a,b); 
-			
+			//saida
 			printf("\n\n O resultado fica %1.7e10\n\n",p);
 			
 		break;
@@ -51,12 +54,13 @@ int main(){
 		break;
 		
 		case 4:
+			//entrada
 			printf("Numero 4\n");
-  			
 			printf("\nDigite o ano: ");
  			 scanf("%d", &b);
- 			 
+ 			//processamento 
   		if (b % 4 == 0) {
+  			//saida
    			 printf("\nAno bissexto\n");
   
  		}else {
@@ -67,6 +71,7 @@ int main(){
 		
 		case 5:
 			float n1, n2, n3, media;
+			//entrada
 			printf("\n\n Digite as notas aqui \n");
 			
 			printf("\nNota 1: ");
@@ -77,9 +82,9 @@ int main(){
     		
    			printf("\nNota 3: ");
    			scanf("%f", &n3);
-    
+    		//processamento
 			media = ((n1*1) + (n2*1) + (n3*2))/3;
-			
+			//saida
 		if (media >=60){
         	printf("\nSua media foi: %.2f\n" , media);
        		printf("\nParabens voce foi aprovado\n\n");
@@ -92,7 +97,7 @@ int main(){
 		break;
 		
 		case 6:
-			
+			//entrada
 			printf("Numero 6\n");
 			
 			printf("Nota 1: ");
@@ -100,9 +105,9 @@ int main(){
 			
 			printf("Nota 2: ");
 			scanf("%f", &n2);
-			
+			//processamento
 			media = (n1*n2)/2;
-		
+			//saida
 		if(n1,n2>= 0,0 && n1,n2<=10.0){
 			printf("Sua media é: %.2f", media);
 		}else{

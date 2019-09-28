@@ -9,7 +9,7 @@ int main ()
 		
 		printf("Digite o primeiro texto:\n ");
 		gets(texto1);
-		printf("Digite outro texto para concatenar:\n ");
+		printf("Digite outro texto para imprimir em outra variavel:\n ");
 		gets(texto2);
 		
 		

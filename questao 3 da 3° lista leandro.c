@@ -11,7 +11,7 @@ int main ()
 		//Só consegui com a biblioteca
 		printf("Digite o primeiro texto:\n ");
 		gets(texto1);
-		printf("Digite outro texto para concatenar:\n ");
+		printf("Digite outro texto para comparar:\n ");
 		gets(texto2);
 		
 		

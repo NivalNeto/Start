@@ -1,22 +1,13 @@
 #include <stdio.h>
-#include <conio.h>
 
-int main ()
-{
-	char texto1[50];
-	char texto2[50];
-    int i;
-		
-		printf("Digite o primeiro texto:\n ");
-		gets(texto1);
-		printf("Digite outro texto para concatenar em outra variavel:\n ");
-		gets(texto2);
-		
-		
-		printf("%s %s", texto1,texto2);
-		
-		return 0;
-		
-	
-		
+int main(void) {
+  int i;
+  char texto1[100];
+  char texto2[100];
+  printf("Digite um texto para tranfiri-lo para outra variável e imprimi-lo: \n");
+  scanf("%s",texto1);
+  for(i=0;texto1[i]!='\0'&& i<sizeof(texto1);i++){
+    texto2[i]=texto1[i];
+  }
+  printf(" O texto impresso em outra variável: \n %s",texto2);
 }

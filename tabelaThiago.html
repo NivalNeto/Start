@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Modelo Exemplo</title>
+    <title>Tabela de aumento e imposto</title>
 </head>
 <body>
-    <h1>Lista de Funcinários</h1>
+    <h1>Lista de Funcionários</h1>
     <hr/>
-    <table border="1" id="tabelaFuncionarios">
+    <table border="5" id="tabelaFuncionarios">
+        <!--Definir tamanho da tabela, guardar em um id a tabela e os itens presente na lista-->
         <tr>
             <th>Matrícula</th>
             <th>Nome</th>
@@ -30,6 +31,7 @@
             <td class="info-aumento">20</td>
             <td class="info-imposto">8</td>
             <td class="info-novoSalario">--</td>
+            <!--Modelos pré definidos de joão e maria, guardados em uma classe na tabela-->
         </tr>
     </table>
     <h2>Dados Funcionário</h2>
@@ -52,13 +54,11 @@
     <div>
         <label for="porcImposto">Porcentagem Imposto</label>
         <input type="text" id="porcImposto"/>
+        <!--caixas de texto para incluir a matricula, nome, salario,aumento e imposto e todos guardados em um id-->
     </div>
     <button id="btnCadastrar">Cadastrar</button>
+        <!--botão de cadastrar para confirmar a lista preenchida pelo usuário-->
     <script>
-        function clearInput(id){
-            let inputClear = document.querySelector(id);
-            inputClear.value = '';
-        }
         btnCadastrar.addEventListener ("click", function(){
             let inputMatricula = document.querySelector("#matricula");
             let inputNome = document.querySelector("#nome");
@@ -94,11 +94,6 @@
             tdNovoSalario.textContent = parseFloat(tdSalario.textContent) + (parseFloat(tdSalario.textContent)*parseFloat(tdAumento.textContent)/100) - (parseFloat(tdSalario.textContent)*parseFloat(tdImposto.textContent)/100);
             tdNovoSalario.classList = "info-novoSalario";
             tr.appendChild(tdNovoSalario);
-            clearInput("#matricula");
-            clearInput("#nome");
-            clearInput("#salario");
-            clearInput("#porcAumento");
-            clearInput("#porcImposto");
         })
         let funcionarios = document.querySelectorAll(".funcionario");
         console.log(funcionarios.length);
@@ -110,6 +105,8 @@
             let nSalario = salario + (salario*aumento/100) - (salario*imposto/100)
             novoSalario.textContent = nSalario
         }
-    </script>
+    </script> <!--toda parte funcional do texto está presente aqui, todos os let estão sendo definidos para
+                  gerar dados na tabela e não serem pré definidos como aconteceu com maria e joao, todos os appendChild para adicionar valores novos na tabela e 
+                  o ultimo com imposto em float para n ocorrer erro na definção do valor.-->
 </body>
 </html>

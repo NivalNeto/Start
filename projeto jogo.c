@@ -1,4 +1,3 @@
-
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,8 +20,8 @@ void gotoxy(int column, int row)
 {
   COORD c;
 
-  c.X = column - 1;
-  c.Y = row - 1;
+  c.X = column +20;
+  c.Y = row + 1;
   SetConsoleCursorPosition(hConsoleOut, c);
 }
 
@@ -52,7 +51,7 @@ int vetor[2000],vetorx[2000];
 int limpa[2000],limpax[2000],limpatam=-1;
 int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
         
-       int w=0,time=100,d=0,velo=0,anted=0,random=0,r1=30,r2=15,anterandom=0;
+       int w=0,time=100,d=10,velo=0,anted=0,random=0,r1=30,r2=15,anterandom=0;
        int comparede=0,level=1,rapido=1,saiu=0;
        //float tempo;
        int n1,n2,n3,n4,n32, nt,nn3;
@@ -138,6 +137,7 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
        G(i,2); puts("\xCD");
        G(i,25);puts("\xCD");
                }
+        system("COLOR B0"); 
        G(73,2);puts("\xBB");
        G(2,25);puts("\xC8");
        G(2,2); puts("\xC9");
@@ -220,9 +220,11 @@ getch();
         }
 }
 int main(){
+system("COLOR F0"); 
 snake(1);
 clrscr();
 printf("Jogo produzido para fim de semestre\n");
 printf("Aperte ENTER e recomece seu jogo\n");
 getch();
+getchar();
 }

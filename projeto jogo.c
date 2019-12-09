@@ -5,8 +5,8 @@
 #include <string.h>
 #define G gotoxy
 #define W delay(500);
-HANDLE  hConsoleOut = 0;                   /* Handle to the console */
-CONSOLE_SCREEN_BUFFER_INFO csbiInfo;   /* Console information */
+HANDLE  hConsoleOut = 0;                  
+CONSOLE_SCREEN_BUFFER_INFO csbiInfo;   
 CHAR attribute;
 
 void initvideo()
@@ -53,18 +53,12 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
         
        int w=0,time=100,d=10,velo=0,anted=0,random=0,r1=30,r2=15,anterandom=0;
        int comparede=0,level=1,rapido=1,saiu=0;
-       //float tempo;
        int n1,n2,n3,n4,n32, nt,nn3;
        n1=n2=n3=nt=n4=0; n32=1; 
        char c='f';
-//       char ops[25];
-//       for(int i=0;i<25;i++)ops[i]='a';
        clrscr();
-//       int vetor[20];
        int x=10,y=10,qtd=0,pausa=0;
-       //tempo=clock();
-      
-       
+             
        while (1){
 		
        clrscr();
@@ -90,7 +84,6 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
              }
        c='f';
        while (1){
-    //   clrscr();
       if(tam==0){
                  G(vetorx[0],vetor[0]);puts(" ");
                  }
@@ -116,7 +109,6 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
        if(w==1)if(c==32)rapido=1;
        else  if(c==27){saiu=1;break;}
        else  if(c=='p')pausa=1;
-     //  else  if(c=='q')time=1000;
        if(tam>0){
        v=v%tam;                      
        vetorx[v]=x;
@@ -151,58 +143,49 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
       G(75,9); printf(" & ");
       G(75,10);printf("WESLEY");
       
-      //G(75,6);  puts("TEMPO:");
-      //G(75,7);printf("%d:%d:%d",hora,min,nt);
-      //G(2,30);printf("tempo: %f",tempo);
-      
        if(comparede==1){if(x>71 || y>24 || x<3 || y<3)perdeu=1;}
-       //if(rede==1)exit(2);
        if(x>71)x=3;
        if(y>24)y=3;
        if(x<3)x=71;
        if(y<3)y=24;
        
                 
-//       G(x,y);puts("\xDB");
        G(x,y);puts("\xFA");
        if(tam==0){
          vetorx[0]=x;
          vetor[0]=y;
                   }
        for(int i=0;i<tam;i++){
-//       G(vetorx[i],vetor[i]);puts("\xDB");
+
 G(vetorx[i],vetor[i]);puts("\xFE");
 limpax[i]=vetorx[i];
 limpa[i]=vetor[i];
 limpatam=tam;
 if(vetorx[i]==x&&vetor[i]==y)perdeu=1;
                             }  
+                            
        w=kbhit();
        if(w==1){
        qtd++;
        G(70,24); c=getch();
        G(70,24);puts(" ");
-       /*case 's':break;
-       case 'f':break;
-       case 'e':break;
-       case 'd':break;*/
+ 
                 }
        
        if(x==r1 && y==r2){random++;tam++;}
        G(r1,r2);
-       //printf("%d-%d",random,d);
-       //tempo=clock();
        if(pausa==1){getch();pausa=0;c='a'; }
       if(rapido==0)delay(time/level);
       if(rapido!=0)delay((time/(level+1)));
        if(random%10==0 && anterandom!=random)level++; 
        qtd++;
        qtd=qtd%60;
-//       time=100;
        if(perdeu==1)break;
        }
        clrscr();
        G(1,1);
+    system("COLOR F0"); 
+	   
 if(saiu==0){
 puts("            ______     _______   _______");
 puts("\\        / |      |   |         |       ");
@@ -220,11 +203,11 @@ getch();
         }
 }
 int main(){
-system("COLOR F0"); 
 snake(1);
 clrscr();
 printf("Jogo produzido para fim de semestre\n");
-printf("Aperte ENTER e recomece seu jogo\n");
+printf("Aperte ENTER e encerre seu jogo\n");
 getch();
 getchar();
 }
+

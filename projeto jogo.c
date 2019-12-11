@@ -210,7 +210,7 @@ void salvar(int);{
   
   printf("Escreva o nome do jogador:  ");
   scanf("%s", palavra);
-  //printf(					"Digite seus pontos: ");
+  //printf(					"Digite seus pontos: "); --> pergunta os pontos mas não salva
   //scanf("%d", pontos);
   
 

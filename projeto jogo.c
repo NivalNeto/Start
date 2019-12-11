@@ -1,16 +1,18 @@
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <windows.h> //(define uma janela ativa)que permite uma mudança na janela de texto ativa, parte da tela ondecaracteres podem ser impressos.
 #include <string.h>
-#define G gotoxy
-#define W delay(500);
+#define G gotoxy ///permite que a (coluna, linha) (vá para posição x, y) pré-definida do C que permite o posicionamento do cursor em qualquer posição da tela.
+#define W delay(500); //permite uma parada temporária (em milisegundos) na execução de um programa.
+#include <dos.h>
 HANDLE  hConsoleOut = 0;                  
-CONSOLE_SCREEN_BUFFER_INFO csbiInfo;   
+CONSOLE_SCREEN_BUFFER_INFO csbiInfo;  ////informação do console 
 CHAR attribute;
 
 void initvideo()
 {
+	//// Obtenha as informações da tela e limpe a tela.
   hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
   GetConsoleScreenBufferInfo(hConsoleOut, &csbiInfo);
   attribute = 0x07;
@@ -25,7 +27,7 @@ void gotoxy(int column, int row)
   SetConsoleCursorPosition(hConsoleOut, c);
 }
 
-void clrscr(void)
+void clrscr(void) //A função clrscr (clear screen) pré-definida do C que permite limpar toda tela
 {
   COORD c;
   DWORD len, wr;
@@ -41,30 +43,31 @@ void clrscr(void)
   gotoxy(1, 1);
 }
 
-void delay(DWORD milliseconds)
+void delay(DWORD milliseconds) //padronizar algumas funções que necessitam de uma faixa específica de valores, no caso, os millisegundos.
 {
   Sleep(milliseconds);
 }
  
-void snake(int){
+void snake(int){ //parte mecânica do jogo
 int vetor[2000],vetorx[2000];
 int limpa[2000],limpax[2000],limpatam=-1;
 int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
         
-       int w=0,time=100,d=10,velo=0,anted=0,random=0,r1=30,r2=15,anterandom=0;
+       int w=0,time=100,d=10,velo=0,anted=0,random=0,r1=30,r2=15,anterandom=0; //tamnanho,velocidade e niveis até o char.
        int comparede=0,level=1,rapido=1,saiu=0;
        int n1,n2,n3,n4,n32, nt,nn3;
        n1=n2=n3=nt=n4=0; n32=1; 
-       char c='f';
-       clrscr();
+       char c='f'; //aractere de texto usamos apostrofes
+       clrscr(); //limpar
        int x=10,y=10,qtd=0,pausa=0;
              
        while (1){
 		
-       clrscr();
+       clrscr();  //permite limpar toda tela
+    	
     	
        G(20,y3+5);puts("\x1");
-       G(25,5);puts("SEM PAREDE");
+       G(25,5);puts("MODO INFINITO");
        G(25,10);puts("COM PAREDE");
        G(25,15);puts("SAIR");
        c=getche();
@@ -130,15 +133,16 @@ int tam=0,v=0,x1=0,y1=0,perdeu=0,y3=0;
        G(i,25);puts("\xCD");
                }
         system("COLOR B0"); 
+
        G(73,2);puts("\xBB");
        G(2,25);puts("\xC8");
        G(2,2); puts("\xC9");
       G(73,25);puts("\xBC");
       G(75,3);printf("LEVEL:");
       G(75,4);printf("%d",level);
-      G(75,5);printf("PONTOS");
+      G(75,5);printf("PONTOS\n\n");
       G(75,6);printf(":%d",tam);
-      G(75,7); printf("___");
+      G(75,7); printf("Feito por:");
       G(75,8); printf("NIVAL");
       G(75,9); printf(" & ");
       G(75,10);printf("WESLEY");
@@ -172,7 +176,7 @@ if(vetorx[i]==x&&vetor[i]==y)perdeu=1;
  
                 }
        
-       if(x==r1 && y==r2){random++;tam++;}
+       if(x==r1 && y==r2){random++;tam++;}//tam aumenta a pontuação
        G(r1,r2);
        if(pausa==1){getch();pausa=0;c='a'; }
       if(rapido==0)delay(time/level);
@@ -184,30 +188,53 @@ if(vetorx[i]==x&&vetor[i]==y)perdeu=1;
        }
        clrscr();
        G(1,1);
-    system("COLOR F0"); 
-	   
-if(saiu==0){
-puts("            ______     _______   _______");
-puts("\\        / |      |   |         |       ");
-puts(" \\      /  |      |   |         |       ");
-puts("  \\    /   |      |   |         |----   ");
-puts("   \\  /    |      |   |         |       ");
-puts("    \\/     |______|   |_______  |_______");
-puts("\n");
-puts(" _______    ______   ______     _____   ______  ___   ___  ||| ");
-puts("|       )  |        |      )   |     \\ |        ---   ---  |||");
-puts("|------´   |___     |------\\   |      ||___     ---   ---  |||");
-puts("|          |        |       \\  |      ||         --   --   |||");
-puts("|          |______  |        | |_____/ |______    -___-     0 ");
-getch();
-        }
+     
+
+void salvar(int);{
+
+
+  FILE *tam; // cria variável ponteiro para o arquivo
+  char palavra[100];
+  //int pontos;  --> bug que não salva
+  
+   // variável do tipo string
+ 	 
+  //abrindo o arquivo com tipo de abertura w
+	tam = fopen("rank.txt", "w"); //w grava dados
+  //testando se o arquivo foi realmente criado
+  if(tam == NULL)
+  {
+  printf("Erro na abertura do arquivo!");
+  
+  }
+  
+  printf("Escreva o nome do jogador:  ");
+  scanf("%s", palavra);
+  //printf(					"Digite seus pontos: ");
+  //scanf("%d", pontos);
+  
+
+  
+  
+
+  //usando fprintf para armazenar a string no arquivo
+  fprintf(tam, "%s", palavra);
+  //fprintf(tam, "%d", pontos); --> bug não salva
+  //usando fclose para fechar o arquivo
+  fclose(tam);
+  
+  printf("		Dados gravados com sucesso!");
+  
+  getch();
+
 }
-int main(){
+}
+
+int main(){	
 snake(1);
 clrscr();
-printf("Jogo produzido para fim de semestre\n");
-printf("Aperte ENTER e encerre seu jogo\n");
+printf("Jogo produzido para fim do semestre\n");
+printf("			Aperte ENTER e encerre seu jogo\n");
 getch();
 getchar();
 }
-

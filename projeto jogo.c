@@ -7,7 +7,7 @@
 #define W delay(500); //permite uma parada temporária (em milisegundos) na execução de um programa.
 #include <dos.h>
 HANDLE  hConsoleOut = 0;                  
-CONSOLE_SCREEN_BUFFER_INFO csbiInfo;  ////informação do console 
+CONSOLE_SCREEN_BUFFER_INFO csbiInfo;  //informação do console 
 CHAR attribute;
 
 void initvideo()
@@ -18,7 +18,7 @@ void initvideo()
   attribute = 0x07;
 }
 
-void gotoxy(int column, int row)
+void gotoxy(int column, int row) //linha e coluna sem parametro
 {
   COORD c;
 
@@ -190,7 +190,7 @@ if(vetorx[i]==x&&vetor[i]==y)perdeu=1;
        G(1,1);
      
 
-void salvar(int);{
+void salvar(int);{ //funçoes que não tem paramêtros
 
 
   FILE *tam; // cria variável ponteiro para o arquivo
